@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/stsm.css" th:href="@{/css/stsm.css}"/>
+
+</head>
+<body>
+    <p th:text="'Hello3, ' + ${name} + '!'" >Hello</p>
+    
+    <div>
+      <img src="../static/images/stsmlogo.png" alt="STSM logo" title="STSM logo" 
+           th:src="@{/images/stsmlogo.png}"/>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>KS Search</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/stsm.css" th:href="@{/css/stsm.css}"/>
+  </head>
+
+  <body>
+
+    <div>
+      <img src="../static/images/stsmlogo.png" alt="STSM logo" title="STSM logo" 
+           th:src="@{/images/stsmlogo.png}" th:alt-title="#{title.application}"/>
+    </div>
+    
+        <div>
+    
+      <h2 th:text="#{search.title}">Search KS</h2>
+
+      <form action="#" th:action="@{/ks/query}" th:object="${ksquery}" method="post">
+    
+        <fieldset>
+          <div>
+            <label for="tag">
+              <span th:text="#{search.tags}">Tags</span>
+            </label>
+            <input type="text" th:field="*{tag}" th:errorclass="fieldError" />
+          </div>       
+             
+          <div>
+            <label for="content">
+              <span th:text="#{search.content}">Content</span>
+            </label>
+            <input type="text" th:field="*{content}" th:errorclass="fieldError" />
+          </div>
+    
+         <div class="submit">
+            <button type="submit" name="save" th:text="#{search.submit}">Submit</button>    
+          </div>
+	    </fieldset>
+	  </form>
+	</div>
+	    
+    <div class="seedstarterlist" th:unless="${#lists.isEmpty(results)}">
+    
+      <h2 th:text="#{title.list}">List of KS snippets</h2>
+      
+      <table>
+        <thead>
+          <tr>
+            <th th:text="#{searchgrid.id}">Id</th>
+            <th th:text="#{searchgrid.location}">Source Location</th>
+            <th th:text="#{searchgrid.date}">Date</th>
+            <th th:text="#{searchgrid.domain}">Domain</th>
+            <th th:text="#{searchgrid.links}">Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="sb : ${results}">
+          	<td th:text="${{sb.id}}">1</td>
+          	<td th:text="${{sb.source.location}}">c:/temp/a.pdf</td>
+            <td th:text="${{sb.createdDt}}">13/01/2011</td>
+            <td th:text="${{sb.domain}}">Domain</td>
+            <td th:text="${{(sb.link1)?:''}}">Link1</td>
+            
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+    </body>
+    </html>
+    

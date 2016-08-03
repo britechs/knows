@@ -1,4 +1,4 @@
-package hello;
+package org.knows.hello;
 
 public class Greeting {
 
