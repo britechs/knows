@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/stsm.css" th:href="@{/css/stsm.css}"/>
+
+</head>
+<body>
+    <p th:text="'Hello3, ' + ${name} + '!'" >Hello</p>
+    
+    <div>
+      <img src="../static/images/stsmlogo.png" alt="STSM logo" title="STSM logo" 
+           th:src="@{/images/stsmlogo.png}"/>
+    </div>
+    
+    <div class="seedstarterlist">
+       <table>
+        <thead>
+          <tr>
+            <th th:text="#{searchgrid.id}">Id</th>
+            <th th:text="#{searchgrid.location}">Source Location</th>
+            <th th:text="#{searchgrid.date}">Date</th>
+            <th th:text="#{searchgrid.domain}">Domain</th>
+            <th th:text="#{searchgrid.links}">Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+          	<td th:text="${{snippet.id}}">1</td>
+          	<td th:text="${{snippet.source.location}}">c:/temp/a.pdf</td>
+            <td th:text="${{snippet.createdDt}}">13/01/2011</td>
+            <td th:text="${{snippet.domain}}">Domain</td>
+            <td th:text="${{(snippet.link1)?:''}}">Link1</td>
+            
+          </tr>
+        </tbody>
+      </table>
+      
+      <p>Title</p>
+      <b><td th:text="${{(snippet.title)?:''}}">Title</td>
+      </b>
+      <p>Content</p>
+      <p th:text="${{snippet.content}}">Text</p>
+      </div>
+      
+</body>
+</html>

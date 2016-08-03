@@ -59,7 +59,7 @@
         </thead>
         <tbody>
           <tr th:each="sb : ${results}">
-          	<td th:text="${{sb.id}}">1</td>
+          	<td><a href="/ks/view?id=1"  th:href="@{/ks/view(id=${sb.id})}" th:text="${{sb.id}}">1</a></td>
           	<td th:text="${{sb.source.location}}">c:/temp/a.pdf</td>
             <td th:text="${{sb.createdDt}}">13/01/2011</td>
             <td th:text="${{sb.domain}}">Domain</td>

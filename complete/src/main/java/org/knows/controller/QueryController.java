@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class QueryController {
@@ -24,7 +25,7 @@ public class QueryController {
 	static Logger logger = Logger.getLogger(HelloController.class);
     
 	@RequestMapping("/ks/query")
-    public String docapture(final KSQuery ksquery, final ModelMap model) {
+    public String doquery(final KSQuery ksquery, final ModelMap model) {
         logger.info("in /query");
         Pageable page =  new PageRequest(0, 10);
         if(ksquery.getPageno()!=0) 
@@ -48,4 +49,11 @@ public class QueryController {
         return "ksquery";
     }
 	
+	@RequestMapping("/ks/view")
+    public String doview(@RequestParam("id") String id, final ModelMap model) {
+        logger.info("in /query");
+        KSSnippet snippet = snippetDao.findOne(id);
+        model.addAttribute("snippet",snippet);
+        return "ksview";
+	}
 }
